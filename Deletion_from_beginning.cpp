@@ -45,10 +45,19 @@ void print()
 }
 void deletion()
 {
-
     node *temp2 = head;
+    if(temp2->next!=NULL)
+    {
     temp2=temp2->next;
     head = temp2;
+    }
+    else
+    {
+        head=NULL;
+        cout<<"List is empty now, cannot delete more";
+        return;
+    }
+
 
 }
 
@@ -56,18 +65,25 @@ int main()
 {
     char ans;
     insert(5,1); //List is 5
-    insert(2,2); //List is 5 2
-    insert(4,3); //List is 5 2 4
-    insert(6,1); //List is 6 5 2 4
+   // insert(2,2); //List is 5 2
+   // insert(4,3); //List is 5 2 4
+    //insert(6,1); //List is 6 5 2 4
     print();
     cout<<"Do you want to delete y or n"<<endl;
     cin>>ans;
     while(ans != 'n')
     {
         deletion();
+        if(head!=NULL)
+        {
         print();
         cout<<"Do you want to delete more y or n ?"<<endl;
         cin>>ans;
+        }
+        else
+        {
+            break;
+        }
 
     }
     print();
